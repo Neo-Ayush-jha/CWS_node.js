@@ -1,0 +1,28 @@
+extend base.pug
+block content 
+    .container
+        .row
+            .col-8  
+                .card.border-white.border-3
+                    .card-body 
+                        table.table 
+                            tr 
+                                th Name
+                                th Duration
+                                th Instructor
+                                th Fee
+                                th Description
+                                th category
+                                th Action
+                            each val in courses 
+                                tr 
+                                    td=val.title
+                                    td=`${val.duration} Months`
+                                    td=val.instructor
+                                    td=val.discount_price
+                                        span.text-muted.small=val.price 
+                                    td=val.description
+                                    td=val.category_id.cat_title
+                                    td 
+                                        a.btn.btn-danger(href="")
+                                            i.bi.bi-trash-fill 
