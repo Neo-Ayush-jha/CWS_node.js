@@ -1,0 +1,25 @@
+extend ../index.pug
+block content 
+    include ../nav.pug
+    .container-fluid.bg-dark.mb-5(style="height:100vh")
+            .row
+                .col-6.mx-auto
+                    .row
+                        .col-8.bg-dark(style="height:100vh").mx-auto
+                            .card(style="margin-top:40px").bg-secondary 
+                                .card-body.bg-secondary(style="height:550px").text-center
+                                    h2.card-title.h2.text-light Welcome
+                                    p.card-title A loging system for Student  
+                                    img(src="../image/st.svg", alt="" style="height:180px;").rounded-circle.p-0.mt-2.border.border-dark.border-2
+                                    form(action="" method="post")  
+                                        .mb-3.border.border-dark.border-2.rounded 
+                                            .form-floating 
+                                                input.form-control(type="email" name="email" placeholder=" enter email")
+                                                label(for="") Email/Mobile
+                                        .mb-3.border.border-dark.border-2.rounded 
+                                            .form-floating 
+                                                input.form-control(type="password" name="password" placeholder=" enter password")
+                                                label(for="") Password 
+                                        .mb-2.text-center.border.border-success 
+                                            .form-floating 
+                                                input.btn.btn-success.w-100(type="submit" value="Login")

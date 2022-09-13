@@ -7,33 +7,10 @@ block content
             .col-4 
                 a.btn.btn-warning.float-end(href="",data-bs-toggle="modal",data-bs-target="#insertCat") Create new Category 
             .col-8 
-                .card.border-white.border-3
-                    .card-body 
-                        table.table 
-                            tr 
-                                th Name
-                                th Duration
-                                th Instructor
-                                th Fee
-                                th Description
-                                th category
-                                th Action
-                            each val in courses 
-                                tr 
-                                    td=val.title
-                                    td=`${val.duration} Months`
-                                    td=val.instructor
-                                    td=val.discount_price
-                                        span.text-muted.small=val.price 
-                                    td=val.description
-                                    td=val.category_id.cat_title
-                                    td 
-                                        a.btn.btn-danger(href="")
-                                            i.bi.bi-trash-fill 
-            .col-4 
+
                 .card.mt-2 
                     .card-body
-                        form(action="",method="post")
+                        form(action="",method="post" enctype="multipart/form-data" )
                             .row 
                                 .mb-3.col 
                                     label(for="") Course name 
@@ -41,9 +18,13 @@ block content
                                 .mb-3.col 
                                     label(for="") Instructor name 
                                     input.form-control(type="text",name="instructor")
-                            .mb-3.col 
-                                label(for="") Duration
-                                input.form-control(type="text",name="duration")
+                            .row 
+                                .mb-3.col 
+                                    label(for="") Duration
+                                    input.form-control(type="text",name="duration")
+                                .mb-3.col 
+                                    label(for="") Image of course 
+                                    input.form-control(type="file" name="image")
                             .row 
                                 .mb-3.col 
                                     label(for="") Price
@@ -68,7 +49,7 @@ block content
                 .modal-header 
                     h6 Insert Category Here 
                 .modal-body 
-                    form(action="/admin/insert-course-category",method="post")
+                    form(action="/admin/insert-course-category",method="post" )
                         .mb-3 
                             label(for="") Name 
                             input.form-control(type="text",name="cat_title")
@@ -77,3 +58,27 @@ block content
                             textarea.form-control(name="cat_description")
                         .mb-3 
                             input.btn.btn-success(type="submit",value="Insert Category")
+                            .card.border-white.border-3
+            //-         .card-body 
+            //-             table.table 
+            //-                 tr 
+            //-                     th Name
+            //-                     th Duration
+            //-                     th Instructor
+            //-                     th Fee
+            //-                     th Description
+            //-                     th category
+            //-                     th Action
+            //-                 each val in courses 
+            //-                     tr 
+            //-                         td=val.title
+            //-                         td=`${val.duration} Months`
+            //-                         td=val.instructor
+            //-                         td=val.discount_price
+            //-                             span.text-muted.small=val.price 
+            //-                         td=val.description
+            //-                         td=val.category_id.cat_title
+            //-                         td 
+            //-                             a.btn.btn-danger(href="")
+            //-                                 i.bi.bi-trash-fill 
+            //- .col-4 

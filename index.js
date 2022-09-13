@@ -1,6 +1,6 @@
 var express = require("express");
 var app = express();
-var path = require("body-parser");
+var path = require('path');
 var router=require("./router/route");
 var db = require("./config/db");
 const bodyParser = require("body-parser");
@@ -27,5 +27,5 @@ app.use("/",router);
 app.set("view engine","pug");
 app.set("views","./public/view");
 
-// app.use("/image",express.static(path.join(__dirname,"image")));
+app.use("/image",express.static(path.join(__dirname,"image")));
 app.listen(8081);

@@ -1,0 +1,33 @@
+extend index.pug 
+block content 
+    include nav.pug
+    .container-fluid.text-wite.py-5(style="background: url('https://appco.themetags.com/img/footer-bg.png')no-repeat center center / cover;height:600px;")
+        .container.py-3
+            .row
+                .col-4 
+                    img(src=`../image/ss.svg`, alt="" style="height:500px;width:500px").card-img-top.shadow-lg.img-fluid.rounded-lg
+                .col-8 
+                    table.table.text-light.fs-4 
+                        tr 
+                            th Course name 
+                            td #{courses.title}
+                        tr 
+                            th Course  Instructor
+                            td 
+                        tr 
+                            th Course discription 
+                            td 
+                        tr 
+                            th Course price 
+                            td 
+                        tr 
+                            th Course name 
+                            td 8 
+                                del 4
+                        tr 
+                            th Course duration 
+                            td 
+                    .row 
+                        .col.my-3 
+                            a.btn.btn-success(href="").mx-3 Book this course 
+                            a.btn.btn-warning Add in Wishlist

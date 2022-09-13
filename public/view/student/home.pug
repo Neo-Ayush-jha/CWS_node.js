@@ -1,0 +1,8 @@
+extend ../index.pug
+block content 
+    include ../nav.pug
+    .container-fluid.bg-dark.mb-5(style="height:100vh")
+            .row
+                .col-6.mx-auto.text-light
+                    h1 hello student
+                    h3.text-center #{students.name}  #{students.email}
