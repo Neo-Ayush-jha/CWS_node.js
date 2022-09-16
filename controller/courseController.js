@@ -2,6 +2,7 @@ const {response} = require("express");
 var CourseModel = require("../model/CourseModel");
 var CourseCategoryModel = require("../model/CourseCategoryModel");
 var StudentCourse = require("../model/StudentCourse");
+const moment = require("moment");
 
 async function getUser(req){
     std= await StudentCourse.findById(req.session.student_id);
@@ -61,20 +62,23 @@ async function ManageCourse(req, res){
     // res.render("admin/insert-course",{"courses": data})
 }
 async function SingelCourse(req,res){
-    var id =req.param.id;
-      CourseModel.find({"_id":id},(error,response)=>
-      res.render("singleCourse",{"courses":response})
-      )
+    let id =req.params.id;
+    const data = await CourseModel.findById(id); 
+    res.render("singleCourse",{'course':data});
+
 }
+
+
 async function addStudentCourse(req,res){
     std = await getUser(req);
-    stdCourse = await StudentCourse.exsts({'studentId':std._id,"courseId":req.body.courseId}).then((exist)=>{
-        if(exist){
+    var stdCourse = await StudentCourse.findOne({'studentId':std._id,"courseId":req.body.courseId})
+    console.log("hello this",stdCourse)
+        if(stdCourse){
             res.render("/student/home");
         }
         else{
             var currentDate = new Date();
-            var stdCourse = studentCourse({
+            var stdCourse = StudentCourse.create({
                 studentId:std._id,
                 courseId:req.body.courseId,
                 doj:currentDate,
@@ -82,14 +86,14 @@ async function addStudentCourse(req,res){
             });
             stdCourse.save();
             res.redirect("/student/home");
+            console.log('stdCourse');
         }
-        console.log(stdCourse);
-    })
-}
+    }
 async function manageCourseStudent(req,res){
     std = await getUser(req);
     stdCourse = await CourseModel.find({});
-    res.render("singleCourse",{'student':std,"StudentCourse":stdCourse});
+    res.render("singleCourse",{'student':std,"course":stdCourse});
+    console.log("gcgcccgh");
 }
 module.exports = {
     InsertCourse,

@@ -1,7 +1,7 @@
 extend index.pug 
 block content 
     include nav.pug
-    .container-fluid.text-wite.py-5(style="background: url('https://appco.themetags.com/img/footer-bg.png')no-repeat center center / cover;height:450px;")
+    .container-fluid.text-wite.py-5(style="background: url('https://appco.themetags.com/img/footer-bg.png')no-repeat center center / cover;height:480px;")
         .container.py-3
             .row
                 .col-8 
@@ -22,8 +22,8 @@ block content
                             .card(style="height:270px")
                                 .card-body 
                                     .card.border.text-center.shadow-lg.h-100
-                                        img(src=`./image/ss.svg`, alt="" style="height:100px;").card-img-top.shadow-lg.img-fluid
-                                        //- img(src=`${'./'+val.image}`, alt="" style="height:100px;").card-img-top.shadow-lg.img-fluid
+                                        //- img(src=`./image/ss.svg`, alt="" style="height:100px;").card-img-top.shadow-lg.img-fluid
+                                        img(src=`/../image/${val.image}`, alt="" style="height:100px;").card-img-top.shadow-lg.img-fluid
                                         .card-body.p-2.pb-0.mb-0(style="height:80px")
                                             h3.h6.mb-0=val.title
                                         .card-footer

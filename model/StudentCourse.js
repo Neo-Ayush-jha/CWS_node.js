@@ -7,6 +7,6 @@ var StudentCourse = mongoose.Schema({
     status:{type:Number,require:true,default:1},
 });
 
-var StudentCourse = mongoose.model("student-course",StudentCourse)
+var StudentCourse = mongoose.model("StudentCourse",StudentCourse)
 
 module.exports = StudentCourse;

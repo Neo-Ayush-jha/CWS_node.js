@@ -5,7 +5,7 @@ var { insertStudent, Course, Home, studentHome, studentLogin,studentLoginCheck }
 var  {adminAuthorized, adminAuthorizedCheck}  = require("../middleware/adminMiddleware");
 var  {studentAuthorized, studentAuthorizedCheck}  = require("../middleware/studentMiddleware");
 var { DashboardView, ManageStudent, InsertAdmin, AdminLogin, adminLogin, Login } = require("../controller/adminController");
-const { InsertCourse, InsertCourseFrom, InsertCourseCategory, ManageCourse,SingelCourse,addStudentCourseStore,addStudentCourse } = require("../controller/courseController");
+const { InsertCourse, InsertCourseFrom, InsertCourseCategory, ManageCourse,SingelCourse,manageCourseStudent,addStudentCourse } = require("../controller/courseController");
 const upload = require("../middleware/upload")
 
 
@@ -41,7 +41,7 @@ router.get("/admin/manage-course",adminAuthorized,ManageCourse);
 router.get("/admin/manage-course",adminAuthorized,ManageCourse);
 
 router.get("/singleCourse/:id",SingelCourse);
-// router.get("/student/course/add",studentAuthorized,addStudentCourse);
-// router.post("/student/course/add",studentAuthorized,addStudentCourseStore);
+router.get("/student/home",studentAuthorized,addStudentCourse);
+router.post("/student/home",studentAuthorized,manageCourseStudent);
 
 module.exports = router;

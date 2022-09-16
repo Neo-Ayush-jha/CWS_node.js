@@ -1,5 +1,6 @@
 var AdminModel = require("../model/adminModel");
 var studentModel =require("../model/studentModels");
+var CourseModel = require("../model/CourseModel");
 
 // function InsertAdmin(req,res){
 //             var admin= new AdminModel({
@@ -10,7 +11,8 @@ var studentModel =require("../model/studentModels");
 //     }
 async function DashboardView(req,res){
     const newStudent =await studentModel.find({status:1}).countDocuments();
-    res.render("admin/dashboard",{"newStudent":newStudent});
+    const newCourse=await CourseModel.find().countDocuments();
+    res.render("admin/dashboard",{"newStudent":newStudent,'newCourse':newCourse});
 }
 
 function adminLogin(req,res) {

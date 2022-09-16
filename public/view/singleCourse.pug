@@ -1,33 +1,39 @@
 extend index.pug 
 block content 
     include nav.pug
-    .container-fluid.text-wite.py-5(style="background: url('https://appco.themetags.com/img/footer-bg.png')no-repeat center center / cover;height:600px;")
+    .container-fluid.text-wite.py-5(style="background: url('https://appco.themetags.com/img/footer-bg.png')no-repeat center center / cover;height:130vh;")
         .container.py-3
             .row
                 .col-4 
-                    img(src=`../image/ss.svg`, alt="" style="height:500px;width:500px").card-img-top.shadow-lg.img-fluid.rounded-lg
+                    img(src=`/../image/${course.image}`, alt="" style="height:500px;width:500px").card-img-top.shadow-lg.img-fluid.rounded-lg
                 .col-8 
                     table.table.text-light.fs-4 
                         tr 
                             th Course name 
-                            td #{courses.title}
+                            td #{course.title}
                         tr 
                             th Course  Instructor
-                            td 
-                        tr 
-                            th Course discription 
-                            td 
+                            td #{course.instructor}
                         tr 
                             th Course price 
-                            td 
+                            td #{course.price}
                         tr 
-                            th Course name 
-                            td 8 
-                                del 4
+                            th Course discount print 
+                            td #{course.discount_print} 
+                                del #{course.price}
                         tr 
                             th Course duration 
-                            td 
+                            td #{course.duration}
                     .row 
                         .col.my-3 
-                            a.btn.btn-success(href="").mx-3 Book this course 
-                            a.btn.btn-warning Add in Wishlist
+                            //- a.btn.btn-danger(href=`/student/home/${course._id}`).p-1 Apply for course 
+                            form(action="/student/home", method="post") 
+                                .row 
+                                    .col-3
+                                        input.btn.btn-success.w-100.text-dark.fs-3.p-1(type="submit")   
+                                    .col-3
+                                        a.btn.btn-warning.fs-3.p-1 Add in Wishlist
+                        card.border.border-3 
+                            card-body.text-light
+                                h1 Course discription 
+                                p #{course.description}
