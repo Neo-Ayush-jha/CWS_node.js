@@ -2,10 +2,12 @@ const {response} = require("express");
 var CourseModel = require("../model/CourseModel");
 var CourseCategoryModel = require("../model/CourseCategoryModel");
 var StudentCourse = require("../model/StudentCourse");
+const StudentModel = require("../model/studentModels"); 
+
 const moment = require("moment");
 
 async function getUser(req){
-    std= await StudentCourse.findById(req.session.student_id);
+    std= await StudentModel.findById(req.session.student_id);
     return std;
 }
 function InsertCourseCategory(req,res){
@@ -70,15 +72,17 @@ async function SingelCourse(req,res){
 
 
 async function addStudentCourse(req,res){
+    res.send("Hello")
+    console.log(req.body);
     std = await getUser(req);
-    var stdCourse = await StudentCourse.findOne({'studentId':std._id,"courseId":req.body.courseId})
+     stdCourse = await StudentCourse.exists({'studentId':std._id,"courseId":req.body.courseId}).then((exist)=>{
     console.log("hello this",stdCourse)
         if(stdCourse){
             res.render("/student/home");
         }
         else{
             var currentDate = new Date();
-            var stdCourse = StudentCourse.create({
+            var stdCourse =new StudentCourse({
                 studentId:std._id,
                 courseId:req.body.courseId,
                 doj:currentDate,
@@ -88,7 +92,8 @@ async function addStudentCourse(req,res){
             res.redirect("/student/home");
             console.log('stdCourse');
         }
-    }
+    })
+}
 async function manageCourseStudent(req,res){
     std = await getUser(req);
     stdCourse = await CourseModel.find({});

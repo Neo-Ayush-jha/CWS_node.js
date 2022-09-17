@@ -30,7 +30,7 @@ async function studentHome(req,res){
     res.render("student/home",{"students":data});
 }
 
-function studentLogin(req, res) {
+function studentLogin(req,res) {
     res.render("student/login")
 }
 async function studentLoginCheck(req, res) {
@@ -41,7 +41,7 @@ async function studentLoginCheck(req, res) {
     console.log(account)
     if (account.email === email && account.password === password) {
         req.session.student_id = account._id;
-        res.redirect('/student/home');
+        res.redirect('/student/homes');
     } else {
         res.send("wrong");
     }

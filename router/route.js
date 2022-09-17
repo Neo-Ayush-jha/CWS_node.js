@@ -24,7 +24,7 @@ router.get("/admin/new-student",adminAuthorized,ManageStudent);
 // student Routestart here
 router.get('/student/login', studentAuthorizedCheck, studentLogin);
 router.post('/student/login', studentLoginCheck);
-router.get("/student/home",studentAuthorized,studentHome);
+router.get("/student/homes",studentAuthorized,studentHome);
 
 
 router.get("/apply" ,function(req,res){
@@ -41,6 +41,7 @@ router.get("/admin/manage-course",adminAuthorized,ManageCourse);
 router.get("/admin/manage-course",adminAuthorized,ManageCourse);
 
 router.get("/singleCourse/:id",SingelCourse);
+
 router.get("/student/home",studentAuthorized,addStudentCourse);
 router.post("/student/home",studentAuthorized,manageCourseStudent);
 
