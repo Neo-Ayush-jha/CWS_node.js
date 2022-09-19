@@ -1,8 +1,8 @@
 var mongoose = require('mongoose')
 
 var StudentCourse = mongoose.Schema({
-    courseId:{type:mongoose.Schema.Types.ObjectId,ref:"courses"},
     studentId:{type:mongoose.Schema.Types.ObjectId,ref:"student"},
+    courseId:{type:mongoose.Schema.Types.ObjectId,ref:"courses"},
     doj:{type:Date},
     status:{type:Number,require:true,default:1},
 });

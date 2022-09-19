@@ -42,7 +42,7 @@ router.get("/admin/manage-course",adminAuthorized,ManageCourse);
 
 router.get("/singleCourse/:id",SingelCourse);
 
-router.get("/student/home",studentAuthorized,addStudentCourse);
-router.post("/student/home",studentAuthorized,manageCourseStudent);
+router.post("/student/home",studentAuthorized,addStudentCourse);
+router.get("/student/home",studentAuthorized,manageCourseStudent);
 
 module.exports = router;

@@ -12,6 +12,6 @@ var CourseModel = mongoose.Schema({
     category_id:{type:mongoose.Schema.Types.ObjectId,ref:"course-category"}
 });
 
-var course = mongoose.model("courses",CourseModel)
+var course = mongoose.model("courses",CourseModel);
 
 module.exports = course;

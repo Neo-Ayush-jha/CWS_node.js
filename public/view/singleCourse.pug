@@ -26,9 +26,9 @@ block content
                             td #{course.duration}
                     .row 
                         .col.my-3 
-                            a.btn.btn-danger(href=`/student/home`).p-1 Apply for course 
+                            //- a.btn.btn-danger(href=`/student/home`).p-1 Apply for course 
                             form(action="/student/home", method="post")
-                                input(type="text", name="courseId" value=`${course._id}`) 
+                                input(type="text", name="course_id" value=`${course._id}`) 
                                 .row 
                                     .col-3
                                         input.btn.btn-success.w-100.text-dark.fs-3.p-1(type="submit")   

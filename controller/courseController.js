@@ -72,33 +72,34 @@ async function SingelCourse(req,res){
 
 
 async function addStudentCourse(req,res){
-    res.send("Hello")
-    console.log(req.body);
-    std = await getUser(req);
-     stdCourse = await StudentCourse.exists({'studentId':std._id,"courseId":req.body.courseId}).then((exist)=>{
-    console.log("hello this",stdCourse)
-        if(stdCourse){
+    console.log(req.body.course_id);
+    console.log('hello');
+    let std = await getUser(req);
+    // console.log(std);
+    // let stdCourse = await StudentCourse.findById({'studentId':std._id,"courseId":req.body.course_id})
+    let stdCourse =  await StudentCourse.exists({'studentId':std._id,"courseId":req.body.course_id}).then((exist)=>{
+        if(exist){
             res.render("/student/home");
         }
         else{
             var currentDate = new Date();
             var stdCourse =new StudentCourse({
                 studentId:std._id,
-                courseId:req.body.courseId,
+                courseId:req.body.course_id,
                 doj:currentDate,
                 status:1,
             });
             stdCourse.save();
             res.redirect("/student/home");
-            console.log('stdCourse');
+            console.log(stdCourse);
         }
     })
 }
+
 async function manageCourseStudent(req,res){
     std = await getUser(req);
     stdCourse = await CourseModel.find({});
     res.render("singleCourse",{'student':std,"course":stdCourse});
-    console.log("gcgcccgh");
 }
 module.exports = {
     InsertCourse,
