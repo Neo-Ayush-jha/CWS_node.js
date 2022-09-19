@@ -1,8 +1,33 @@
 extend ../index.pug
 block content 
     include ../nav.pug
-    .container-fluid.bg-dark.mb-5(style="height:100vh")
+    .container-fluid.bg-dark.mb-5(style="height:100%")
             .row
-                .col-6.mx-auto.text-light
-                    h1 hello student
-                    h3.text-center #{students.name}  #{students.email}
+                .col-6.mx-auto.text-light.text-center
+                    h3 Hello #{students.name}  #{students.email}
+            .row
+                .col-10.mx-auto
+                    .card
+                        .card-body 
+                            table.table
+                                tr
+                                    th Id
+                                    th Name 
+                                    th Name course
+                                    th Course duration
+                                    th Course center 
+                                    th Course price
+                                    th Course join
+                                each val in StudentCourse
+                                    tr
+                                        //- while (id !=0)
+                                        //-     let i=0
+                                        //-         td i 
+                                        //-             i=+1
+                                        td=val.id
+                                        td=val.courseId.title 
+                                        td=val.courseId.instructor
+                                        td=val.courseId.duration
+                                        td=val.courseId.discount_print 
+                                            span.text-decoration-line-through=val.courseId.price 
+                                        td=val.doj

@@ -72,8 +72,8 @@ async function SingelCourse(req,res){
 
 
 async function addStudentCourse(req,res){
-    console.log(req.body.course_id);
-    console.log('hello');
+    // console.log(req.body.course_id);
+    // console.log('hello');
     let std = await getUser(req);
     // console.log(std);
     // let stdCourse = await StudentCourse.findById({'studentId':std._id,"courseId":req.body.course_id})
@@ -91,7 +91,7 @@ async function addStudentCourse(req,res){
             });
             stdCourse.save();
             res.redirect("/student/home");
-            console.log(stdCourse);
+            // console.log(stdCourse);
         }
     })
 }
@@ -100,6 +100,7 @@ async function manageCourseStudent(req,res){
     std = await getUser(req);
     stdCourse = await CourseModel.find({});
     res.render("singleCourse",{'student':std,"course":stdCourse});
+    console.log(stdCourse)
 }
 module.exports = {
     InsertCourse,

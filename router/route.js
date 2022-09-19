@@ -1,12 +1,12 @@
 var express = require("express");
 var router = express.Router();
 
-var { insertStudent, Course, Home, studentHome, studentLogin,studentLoginCheck } = require("../controller/studentControllers");
+const upload = require("../middleware/upload")
 var  {adminAuthorized, adminAuthorizedCheck}  = require("../middleware/adminMiddleware");
 var  {studentAuthorized, studentAuthorizedCheck}  = require("../middleware/studentMiddleware");
 var { DashboardView, ManageStudent, InsertAdmin, AdminLogin, adminLogin, Login } = require("../controller/adminController");
+var { insertStudent, Course, Home, studentHome, studentLogin,studentLoginCheck,LogoutStudent } = require("../controller/studentControllers");
 const { InsertCourse, InsertCourseFrom, InsertCourseCategory, ManageCourse,SingelCourse,manageCourseStudent,addStudentCourse } = require("../controller/courseController");
-const upload = require("../middleware/upload")
 
 
 
@@ -25,6 +25,7 @@ router.get("/admin/new-student",adminAuthorized,ManageStudent);
 router.get('/student/login', studentAuthorizedCheck, studentLogin);
 router.post('/student/login', studentLoginCheck);
 router.get("/student/homes",studentAuthorized,studentHome);
+router.post("/student/logout",LogoutStudent);
 
 
 router.get("/apply" ,function(req,res){
@@ -42,7 +43,7 @@ router.get("/admin/manage-course",adminAuthorized,ManageCourse);
 
 router.get("/singleCourse/:id",SingelCourse);
 
-router.post("/student/home",studentAuthorized,addStudentCourse);
+router.post ("/student/home",studentAuthorized,addStudentCourse);
 router.get("/student/home",studentAuthorized,manageCourseStudent);
 
 module.exports = router;
